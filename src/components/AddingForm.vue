@@ -1,15 +1,6 @@
 <template>
     <div class="adding-form-container">
-        <form @submit.prevent="handleSubmit" class="adding-form">
-            <div class="form-field">
-                <label> Id </label>
-                <input v-model="book.id"
-                 type="text"
-                 :class="{ 'has-error': submitting && invalidId}"
-                 @focus="clearStatus"
-                 @keypress="clearStatus"
-                 name="title"> 
-            </div>            
+        <form @submit.prevent="handleSubmit" class="adding-form">         
             <div class="form-field">
                 <label> Title </label>
                 <input v-model="book.title"
@@ -77,7 +68,7 @@ export default {
         handleSubmit(){
             this.submitting = true
             this.clearStatus()
-            if(this.invalidTitle || this.invalidAuthor || this.invalidPages || this.invalidId){
+            if(this.invalidTitle || this.invalidAuthor || this.invalidPages){
                 this.error = true
                 return
             }
@@ -96,9 +87,6 @@ export default {
         }
     },
     computed: {
-        invalidId(){
-            return this.book.id === ''
-        },
         invalidTitle(){
             return this.book.title === ''
         },

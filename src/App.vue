@@ -22,22 +22,37 @@ export default {
   },
   data(){
     return {
-      books: [
-        {
-          id: 1,
-          title: "Ziemia obiecana",
-          author: "Barack Obama",
-          pages: "400"
-        }
-      ]
+      books: []
     }
   }
   ,
   methods:{
     addBook(book){
-      this.books = [... this.books, book]
+      try{
+        const param = {
+          body: book,
+          method: "POST"
+        }     
+        const response = fetch('http://localhost:8090/books/add', param)
+        this.books = [... this.books, response.json()]
+      }
+      catch(error){
+        console.error(error)
+      }    
+    },
+    getBooks(){
+        try{
+          const response = fetch('http://localhost:8090/books/get')
+          const data = response.json()
+          this.books = data
+        }
+        catch(error){
+          console.error(error)
+        }
+    },
+    mounted(){
+      this.getBooks()
     }
-
   }
 }
 </script>
