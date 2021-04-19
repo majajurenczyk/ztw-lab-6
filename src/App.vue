@@ -17,6 +17,7 @@ import AddingBookForm from './components/AddingBookForm.vue'
 import BooksTable from './components/BooksTable.vue'
 import AddingAuthorForm from './components/AddingAuthorForm.vue'
 import AuthorsTable from './components/AuthorsTable.vue'
+import axios from "axios"
 
 export default {
   name: 'App',
@@ -35,7 +36,7 @@ export default {
   ,
   methods:{
     addBook(book){
-      try{
+      /*try{
         const param = {
           body: book,
           method: "POST",
@@ -45,11 +46,18 @@ export default {
       }
       catch(error){
         console.error(error)
-      }    
+      }*/    
+      axios.post('http://localhost:8090/books/add', {
+        title: book.firstName,
+        author: book.lastName,
+        pages: book.pages
+      })
+      .then(() => { this.getBooks()})
+      .catch(e => alert(e))      
     },
 
     addAuthor(author){
-      try{
+      /*try{
         const param = {
           body: JSON.stringify(author),
           method: 'POST',
@@ -58,34 +66,42 @@ export default {
           }
         }
         fetch('http://localhost:8090/authors/add', param)
-        this.getAuthors()
       }
       catch(error){
         console.error(error)
       }
+      this.getAuthors()*/
+      axios.post('http://localhost:8090/authors/add', {
+        firstName: author.firstName,
+        lastName: author.lastName
+      })
+      .then(() => { this.getAuthors()})
+      .catch(e => alert(e))
     },
 
     getBooks(){
-        try{
+        /*try{
           const response = fetch('http://localhost:8090/books/get')
           const data = response.json()
           this.books = data
         }
         catch(error){
           console.error(error)
-        }
+        }*/
+        axios.get('http://localhost:8090/books/get').then(data => {this.books = data.data}).catch(e => alert(e))
     },
 
     getAuthors(){
-      try{
+      /*try{
         const response = fetch('http://localhost:8090/authors/get')
         const data = response.json()
         this.authors = data
       }
       catch(error){
         console.error(error)
-      }
-    },
+      }*/
+      axios.get('http://localhost:8090/authors/get').then(data => {this.authors = data.data}).catch(e => alert(e))
+    }
   },
   mounted(){
     this.getBooks(),
