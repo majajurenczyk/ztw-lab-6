@@ -12,12 +12,13 @@
             </div>
             <div class="form-field">
                 <label> Author </label>
-                <input v-model="book.author"
-                 type="text"
-                 name="author"
-                 :class="{ 'has-error': submitting && invalidAuthor}"
-                 @focus="clearStatus"
-                 @keypress="clearStatus"> 
+
+                <select v-model="book.author">
+                    <option value="" disabled>Select author</option>
+                    <option v-for="author in authorsSource" :value="author.id" :key="author.id">
+                        {{ author.firstName + " " + author.lastName }}
+                    </option>
+                </select>
             </div>
             <div class="form-field">
                 <label> Pages </label>
@@ -46,6 +47,9 @@
 <script>
 export default {
     name: "adding-book-form",
+    props: {
+        authorsSource: Array
+    },
     data(){
         return {
             submitting: false,
@@ -56,7 +60,9 @@ export default {
                 title: '',
                 author: '',
                 pages: ''
-            }
+            },
+            authorOptions: []
+
         }
     },
     methods: {
