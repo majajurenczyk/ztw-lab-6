@@ -4,25 +4,32 @@
       <h1 class="page-header-item">Book Service</h1>
     </div>
     <div id="page-content">
-      <adding-form @add:book="addBook"></adding-form>
+      <adding-book-form @add:book="addBook"></adding-book-form>
       <books-table :booksSource="books"></books-table>
+      <adding-author-form @add:author="addAuthor"></adding-author-form>
+      <authors-table :authorsSource="authors"></authors-table>
     </div>
   </div>
 </template>
 
 <script>
-import AddingForm from './components/AddingForm.vue'
+import AddingBookForm from './components/AddingBookForm.vue'
 import BooksTable from './components/BooksTable.vue'
+import AddingAuthorForm from './components/AddingAuthorForm.vue'
+import AuthorsTable from './components/AuthorsTable.vue'
 
 export default {
   name: 'App',
   components: {
-    AddingForm,
-    BooksTable
+    AddingBookForm,
+    BooksTable,
+    AddingAuthorForm,
+    AuthorsTable
   },
   data(){
     return {
-      books: []
+      books: [],
+      authors: []
     }
   }
   ,
@@ -31,7 +38,7 @@ export default {
       try{
         const param = {
           body: book,
-          method: "POST"
+          method: "POST",
         }     
         const response = fetch('http://localhost:8090/books/add', param)
         this.books = [... this.books, response.json()]
@@ -40,6 +47,28 @@ export default {
         console.error(error)
       }    
     },
+
+    addAuthor(author){
+      try{
+        const param = {
+          body: JSON.stringify(author),
+          method: 'POST',
+          mode: 'cors',
+          headers: {
+            'Content-Type': 'application/json',
+          }
+        }
+        fetch('http://localhost:8090/authors/add', param)
+        this.getAuthors()
+        //console.log(response)
+        //const added = response.json()
+        //this.authors = [... this.authors, added]
+      }
+      catch(error){
+        console.error(error)
+      }
+    },
+
     getBooks(){
         try{
           const response = fetch('http://localhost:8090/books/get')
@@ -50,8 +79,21 @@ export default {
           console.error(error)
         }
     },
+
+    getAuthors(){
+      try{
+        const response = fetch('http://localhost:8090/authors/get')
+        const data = response.json()
+        this.authors = data
+      }
+      catch(error){
+        console.error(error)
+      }
+    },
+
     mounted(){
-      this.getBooks()
+      this.getBooks(),
+      this.getAuthors()
     }
   }
 }

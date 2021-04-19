@@ -1,6 +1,6 @@
 <template>
-    <div class="adding-form-container">
-        <form @submit.prevent="handleSubmit" class="adding-form">         
+    <div class="adding-book-form-container">
+        <form @submit.prevent="handleSubmit" class="adding-book-form">         
             <div class="form-field">
                 <label> Title </label>
                 <input v-model="book.title"
@@ -45,7 +45,7 @@
 
 <script>
 export default {
-    name: "adding-form",
+    name: "adding-book-form",
     data(){
         return {
             submitting: false,
@@ -109,7 +109,7 @@ export default {
     margin-bottom: 10px;
 }
 
-.adding-form-container{
+.adding-book-form-container{
     margin-bottom: 30px;
 }
 

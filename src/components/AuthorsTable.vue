@@ -1,20 +1,18 @@
 <template>
-    <div id=books-table>
+    <div id=authors-table>
         <table>
             <thead>
                 <tr>
                     <th> ID </th>
-                    <th> Title </th>
-                    <th> Author </th>
-                    <th> Pages </th>
+                    <th> First Name </th>
+                    <th> Last Name </th>
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="book in booksSource" :key="book.id">
-                    <td> {{book.id}}   </td>
-                    <td> {{book.title}} </td>
-                    <td> {{book.author}} </td>
-                    <td> {{book.pages}} </td>
+                <tr v-for="author in authorsSource" :key="author.id">
+                    <td> {{author.id}} </td>
+                    <td> {{author.firstName}} </td>
+                    <td> {{author.lastName}} </td>
                 </tr>
             </tbody>
         </table>
@@ -23,29 +21,29 @@
 
 <script>
 export default {
-    name: 'books-table',
+    name: 'authors-table',
     props: {
-        booksSource: Array
+        authorsSource: Array
     }
 }
 </script>
 
 <style scoped>
-    #books-table {
+    #authors-table {
         font-family: Arial, Helvetica, sans-serif;
         border-collapse: collapse;
         width: 100%;
     }
 
-    #books-table td, #books-table th {
+    #authors-table td, #authors-table th {
         border: 1px solid #ddd;
         padding: 8px;
     }
 
-    #books-table tr:nth-child(even){background-color: rgb(204, 202, 202);}
-    #books-table tr:hover {background-color: teal}
+    #authors-table tr:nth-child(even){background-color: rgb(204, 202, 202);}
+    #authors-table tr:hover {background-color: teal}
 
-    #books-table th {
+    #authors-table th {
         padding-top: 10px;
         padding-bottom: 10px;
         text-align: left;
