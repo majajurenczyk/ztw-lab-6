@@ -62,7 +62,7 @@ export default {
         axios.get('http://localhost:8090/books/get').then(data => {this.books = data.data}).catch(e => alert(e))
         console.log(this.books)
         
-    }
+    },
 
     deleteBook(id){
       axios.delete(`http://localhost:8090/books/delete/${id}`).then(() => {this.getBooks()}).catch(e => alert(e))
