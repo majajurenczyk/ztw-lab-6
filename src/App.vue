@@ -36,20 +36,9 @@ export default {
   ,
   methods:{
     addBook(book){
-      /*try{
-        const param = {
-          body: book,
-          method: "POST",
-        }     
-        const response = fetch('http://localhost:8090/books/add', param)
-        this.books = [... this.books, response.json()]
-      }
-      catch(error){
-        console.error(error)
-      }*/    
       axios.post('http://localhost:8090/books/add', {
-        title: book.firstName,
-        author: book.lastName,
+        title: book.title,
+        author: book.author,
         pages: book.pages
       })
       .then(() => { this.getBooks()})
@@ -57,20 +46,6 @@ export default {
     },
 
     addAuthor(author){
-      /*try{
-        const param = {
-          body: JSON.stringify(author),
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          }
-        }
-        fetch('http://localhost:8090/authors/add', param)
-      }
-      catch(error){
-        console.error(error)
-      }
-      this.getAuthors()*/
       axios.post('http://localhost:8090/authors/add', {
         firstName: author.firstName,
         lastName: author.lastName
@@ -80,26 +55,10 @@ export default {
     },
 
     getBooks(){
-        /*try{
-          const response = fetch('http://localhost:8090/books/get')
-          const data = response.json()
-          this.books = data
-        }
-        catch(error){
-          console.error(error)
-        }*/
         axios.get('http://localhost:8090/books/get').then(data => {this.books = data.data}).catch(e => alert(e))
     },
 
     getAuthors(){
-      /*try{
-        const response = fetch('http://localhost:8090/authors/get')
-        const data = response.json()
-        this.authors = data
-      }
-      catch(error){
-        console.error(error)
-      }*/
       axios.get('http://localhost:8090/authors/get').then(data => {this.authors = data.data}).catch(e => alert(e))
     }
   },
