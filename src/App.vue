@@ -4,7 +4,7 @@
       <h1 class="page-header-item">Book Service</h1>
     </div>
     <div id="page-content">
-      <adding-book-form @add:book="addBook"></adding-book-form>
+      <adding-book-form @add:book="addBook" :authorsSource="authors"></adding-book-form>
       <books-table :booksSource="books"></books-table>
       <adding-author-form @add:author="addAuthor"></adding-author-form>
       <authors-table :authorsSource="authors"></authors-table>
