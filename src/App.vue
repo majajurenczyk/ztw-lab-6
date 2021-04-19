@@ -4,10 +4,10 @@
       <h1 class="page-header-item">Book Service</h1>
     </div>
     <div id="page-content">
-      <adding-book-form @add:book="addBook" :authorsSource="authors"></adding-book-form>
-      <books-table :booksSource="books"></books-table>
-      <adding-author-form @add:author="addAuthor"></adding-author-form>
-      <authors-table :authorsSource="authors"></authors-table>
+      <adding-book-form @add:book="addBook" @click="updateBook" :authorsSource="authors"></adding-book-form>
+      <books-table :booksSource="books" @onDelete="deleteBook" @onUpdate="updateBook"></books-table>
+      <adding-author-form @add:author="addAuthor" @click="updateAuthor"></adding-author-form>
+      <authors-table :authorsSource="authors" @onDelete="deleteAuthor" @onUpdate="updateAuthor"></authors-table>
     </div>
   </div>
 </template>
@@ -25,7 +25,7 @@ export default {
     AddingBookForm,
     BooksTable,
     AddingAuthorForm,
-    AuthorsTable
+    AuthorsTable,
   },
   data(){
     return {
@@ -64,6 +64,30 @@ export default {
         
     }
 
+    deleteBook(id){
+      axios.delete(`http://localhost:8090/books/delete/${id}`).then(() => {this.getBooks()}).catch(e => alert(e))
+    },
+
+    updateBook(book){
+      axios.put(`http://localhost:8090/books/update/${book.id}`,
+      {
+        title: book.title,
+        author: book.author,
+        pages: book.pages
+      }).then(() => {this.getBooks()}).catch(e => alert(e))
+    },
+
+    deleteAuthor(id){
+      axios.delete(`http://localhost:8090/authors/delete/${id}`).then(() => {this.getAuthors()}).catch(e => alert(e))
+    },
+
+    updateAuthor(author){
+      axios.put(`http://localhost:8090/books/update/${author.id}`,
+      {
+        firstName: author.firstName,
+        lastName: author.lastName
+      }).then(() => {this.getAuthors()}).catch(e => alert(e))
+    }    
   },
   mounted(){
     this.getAuthors(),
