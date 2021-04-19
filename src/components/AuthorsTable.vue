@@ -6,24 +6,37 @@
                     <th> ID </th>
                     <th> First Name </th>
                     <th> Last Name </th>
+                    <th> Action </th>
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="author in authorsSource" :key="author.id">
-                    <td> {{author.id}} </td>
-                    <td> {{author.firstName}} </td>
-                    <td> {{author.lastName}} </td>
-                </tr>
+                <author v-for="author in authorsSource" 
+                :key="author.id"
+                :author="author"
+                @onDelete="onDelete"
+                @onUpdate="onUpdate"/>
             </tbody>
         </table>
     </div>
 </template>
 
 <script>
+import Author from "./Author"
 export default {
     name: 'authors-table',
     props: {
         authorsSource: Array
+    },
+    components:{
+        Author
+    },
+    methods:{
+        onDelete(id) {
+            this.$emit("onDelete", id)
+        },
+        onUpdate(author){
+            this.$emit("onUpdate", author)
+        }
     }
 }
 </script>

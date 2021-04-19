@@ -7,25 +7,38 @@
                     <th> Title </th>
                     <th> Author </th>
                     <th> Pages </th>
+                    <th> Actions </th>
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="book in booksSource" :key="book.id">
-                    <td> {{book.id}}   </td>
-                    <td> {{book.title}} </td>
-                    <td> {{book.author}} </td>
-                    <td> {{book.pages}} </td>
-                </tr>
+                <Book v-for="book in booksSource" 
+                :key="book.id"
+                :book="book"
+                @onDelete="onDelete"
+                @onUpdate="onUpdate"/>
             </tbody>
         </table>
     </div>
 </template>
 
 <script>
+import Book from './Book'
+
 export default {
     name: 'books-table',
+    components:{
+        Book
+    },
     props: {
         booksSource: Array
+    },
+    methods: {
+        onDelete(id) {
+            this.$emit("onDelete", id)
+        },
+        onUpdate(book){
+            this.$emit("onUpdate", book)
+        }
     }
 }
 </script>
