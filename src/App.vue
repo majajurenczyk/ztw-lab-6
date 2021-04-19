@@ -53,16 +53,12 @@ export default {
         const param = {
           body: JSON.stringify(author),
           method: 'POST',
-          mode: 'cors',
           headers: {
             'Content-Type': 'application/json',
           }
         }
         fetch('http://localhost:8090/authors/add', param)
         this.getAuthors()
-        //console.log(response)
-        //const added = response.json()
-        //this.authors = [... this.authors, added]
       }
       catch(error){
         console.error(error)
@@ -90,11 +86,10 @@ export default {
         console.error(error)
       }
     },
-
-    mounted(){
-      this.getBooks(),
-      this.getAuthors()
-    }
+  },
+  mounted(){
+    this.getBooks(),
+    this.getAuthors()
   }
 }
 </script>
