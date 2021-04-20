@@ -6,7 +6,7 @@
       <a class="page-button button shadow-box" href="authors">Authors</a>
     </div>
     <div id="page-content" class="content-box shadow-box">
-      <h1> Welcome to book service! </h1>
+      <h1> Welcome to the Book Service! </h1>
     </div>
   </div>
 </template>
