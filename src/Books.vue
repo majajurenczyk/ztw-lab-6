@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <div id="page-header">
-      <h1 class="page-header-item">Book Service</h1>
+      <h1 class="page-header-item"><a class="page-button" href="/">Book Service</a></h1>
+      <a class="page-button button btn-active" href="books">Books</a>
+      <a class="page-button button" href="authors">Authors</a>
     </div>
     <div id="page-content">
       <adding-book-form @add:book="addBook" :authorsSource="authors"></adding-book-form>
@@ -68,28 +70,6 @@ export default {
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
 
-#page-header {
-  background-color: teal;
-  margin-bottom: 40px;
-  height: 100px;
-  display: flex;
-  align-items: flex-start;
-}
 
-#page-header .page-header-item {
-  background-color: teal;
-  align-items: center;
-  font-size: 50px;
-  color: white;
-  margin-left: 10px;
-  padding: 5px;
-}
 </style>
