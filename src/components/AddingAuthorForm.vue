@@ -6,6 +6,7 @@
                 <input v-model="author.firstName"
                  type="text"
                  name="title"
+
                  :class="{ 'has-error': submitting && invalidTitle}"
                  @focus="clearStatus"
                  @keypress="clearStatus"> 
@@ -21,10 +22,7 @@
             </div>
             <div class="form-field">
                 <p v-if="error && submitting" class="error-message">
-                    Wypelnij wskazane pola formularza
-                </p>
-                <p v-if="success" class="success-message">
-                    Dane poprawnie zapisano
+                    Wypelnij wszystkie pola formularza
                 </p>
             </div>            
             <div class="form-field">

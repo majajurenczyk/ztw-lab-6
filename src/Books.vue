@@ -6,8 +6,6 @@
     <div id="page-content">
       <adding-book-form @add:book="addBook" :authorsSource="authors"></adding-book-form>
       <books-table @onDelete="deleteBook" :booksSource="books" @onUpdate="updateBook"></books-table>
-      <adding-author-form @add:author="addAuthor"></adding-author-form>
-      <authors-table :authorsSource="authors" @onDelete="deleteAuthor" @onUpdate="updateAuthor"></authors-table>
     </div>
   </div>
 </template>
@@ -15,8 +13,6 @@
 <script>
 import AddingBookForm from './components/AddingBookForm.vue'
 import BooksTable from './components/BooksTable.vue'
-import AddingAuthorForm from './components/AddingAuthorForm.vue'
-import AuthorsTable from './components/AuthorsTable.vue'
 import axios from "axios"
 
 export default {
@@ -24,8 +20,6 @@ export default {
   components: {
     AddingBookForm,
     BooksTable,
-    AddingAuthorForm,
-    AuthorsTable,
   },
   data(){
     return {
@@ -43,15 +37,6 @@ export default {
       })
       .then(() => { this.getBooks()})
       .catch(e => alert(e))      
-    },
-
-    addAuthor(author){
-      axios.post('http://localhost:8090/authors/add', {
-        firstName: author.firstName,
-        lastName: author.lastName
-      })
-      .then(() => { this.getAuthors()})
-      .catch(e => alert(e))
     },
 
     getBooks(){
@@ -73,47 +58,7 @@ export default {
         author: book.author,
         pages: book.pages
       }).then(() => {this.getBooks()}).catch(e => alert(e))
-    },
-
-    deleteAuthor(id){
-      axios.delete(`http://localhost:8090/authors/delete/${id}`).then(() => {this.getAuthors()}).catch(e => alert(e))
-    },
-
-    updateAuthor(author){
-      axios.put(`http://localhost:8090/books/update/${author.id}`,
-      {
-        firstName: author.firstName,
-        lastName: author.lastName
-      }).then(() => {this.getAuthors()}).catch(e => alert(e))
-    },
-    onAuthorSubmit(data){
-      if(data.isEdit){
-        this.updateAuthor(data)
-      }
-      else{
-        this.addAuthor(data)
-      }
-    },
-    
-    onBookSubmit(data){
-      if(data.isEdit){
-        this.updateBook(data)
-      }
-      else{
-        this.addBook(data)
-      }
-    },
-
-    onUpdateBook(data){
-      this.booksForm = data;
-      this.booksForm.isEdit = true;
-    },
-
-    onUpdateAuthor(data){
-      this.authorsForm = data;
-      this.authorsForm.isEdit = true;
     },    
-    
   },
   mounted(){
     this.getBooks(),

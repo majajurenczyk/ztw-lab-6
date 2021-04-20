@@ -31,10 +31,7 @@
             </div>
             <div class="form-field">
                 <p v-if="error && submitting" class="error-message">
-                    Wypelnij wskazane pola formularza
-                </p>
-                <p v-if="success" class="success-message">
-                    Dane poprawnie zapisano
+                    Wypelnij wszystkie pola formularza
                 </p>
             </div>            
             <div class="form-field">
@@ -48,7 +45,7 @@
 export default {
     name: "adding-book-form",
     props: {
-        authorsSource: Array
+        authorsSource: Array,
     },
     data(){
         return {
@@ -64,7 +61,7 @@ export default {
             authorOptions: []
 
         }
-    },
+    },    
     methods: {
         clearStatus(){
             this.error = false;

@@ -22,7 +22,7 @@ export default {
         onDelete(){
             this.$emit("onDelete", this.author.id);
         },
-        onEdit(){
+        onUpdate(){
             this.$emit("onUpdate", this.author)
         }
     }
