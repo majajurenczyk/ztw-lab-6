@@ -6,8 +6,8 @@
       <a class="page-button button shadow-box btn-active" href="authors">Authors</a>
     </div>
     <div id="page-content" class="content-box shadow-box">
-      <div class="warning-text"> Błąd 404 </div>
-      <div class="warning-text"> Nie odnaleziono strony! </div>
+      <div class="warning-text"> Error 404 </div>
+      <div class="warning-text"> Page not found! </div>
     </div>
   </div>
 </template>

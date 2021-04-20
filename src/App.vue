@@ -6,7 +6,7 @@
       <a class="page-button button shadow-box" href="authors">Authors</a>
     </div>
     <div id="page-content" class="content-box shadow-box">
-      <h1> Witaj w book service! </h1>
+      <h1> Welcome to book service! </h1>
     </div>
   </div>
 </template>
@@ -66,7 +66,7 @@ body {
 }
 
 #page-content {
-  padding: 15px 25px;
+  padding: 25px 25px;
 }
 
 .content-box {
@@ -127,5 +127,45 @@ body {
   background-color: #e8c7ae;
 }
 
+/* FORMS */
+
+.form-field{
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+.form-field input {
+    width: 150px;
+    font-size: 16px;  
+}
+
+.form-field select {
+    width: 158px;
+    font-size: 16px; 
+}
+
+.form-field label {
+    font-size: 20px;
+    margin-right: 20px;
+    min-width: 110px;
+    text-align: left;
+}
+
+.adding-book-form-container .form-field label {
+    min-width: 75px;
+}
+
+[class*='-message']{
+    font-weight: 500;
+}
+
+.error-message{
+    color: rgb(255, 38, 0);
+}
+
+.success-message {
+    color: rgb(6, 216, 41)
+}
 
 </style>

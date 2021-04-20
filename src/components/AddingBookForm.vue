@@ -2,7 +2,7 @@
     <div class="adding-book-form-container">
         <form @submit.prevent="handleSubmit" class="adding-book-form">         
             <div class="form-field">
-                <label> Title </label>
+                <label> Title: </label>
                 <input v-model="book.title"
                  type="text"
                  name="title"
@@ -11,7 +11,7 @@
                  @keypress="clearStatus"> 
             </div>
             <div class="form-field">
-                <label> Author </label>
+                <label> Author: </label>
 
                 <select v-model="book.author">
                     <option value="" disabled>Select author</option>
@@ -21,7 +21,7 @@
                 </select>
             </div>
             <div class="form-field">
-                <label> Pages </label>
+                <label> Pages: </label>
                 <input v-model="book.pages"
                  type="text"
                  name="pages"
@@ -106,31 +106,8 @@ export default {
 
 <style scoped>
 
-.form-field{
-    display: flex;
-    align-items: flex-start;
-    margin-bottom: 10px;
-}
-
 .adding-book-form-container{
     margin-bottom: 30px;
-}
-
-.form-field label {
-    font-size: 25px;
-    margin-right: 20px;
-}
-
-[class*='-message']{
-    font-weight: 500;
-}
-
-.error-message{
-    color: rgb(255, 38, 0);
-}
-
-.success-message {
-    color: rgb(6, 216, 41)
 }
 
 </style>

@@ -2,7 +2,8 @@
     <div class="adding-author-form-container">
         <form @submit.prevent="handleSubmit" class="adding-author-form">         
             <div class="form-field">
-                <label> First Name </label>
+
+                <label> First Name: </label>
                 <input v-model="author.firstName"
                  type="text"
                  name="title"
@@ -10,9 +11,10 @@
                  :class="{ 'has-error': submitting && invalidTitle}"
                  @focus="clearStatus"
                  @keypress="clearStatus"> 
+
             </div>
             <div class="form-field">
-                <label> Last Name </label>
+                <label> Last Name: </label>
                 <input v-model="author.lastName"
                  type="text"
                  name="author"
@@ -87,32 +89,9 @@ export default {
 
 <style scoped>
 
-.form-field{
-    display: flex;
-    align-items: flex-start;
-    margin-bottom: 10px;
-}
-
 .adding-author-form-container{
-    margin-top: 30px;
     margin-bottom: 30px;
 }
 
-.form-field label {
-    font-size: 25px;
-    margin-right: 20px;
-}
-
-[class*='-message']{
-    font-weight: 500;
-}
-
-.error-message{
-    color: rgb(255, 38, 0);
-}
-
-.success-message {
-    color: rgb(6, 216, 41)
-}
 
 </style>
