@@ -54,12 +54,14 @@ export default {
       .catch(e => alert(e))
     },
 
-    getBooks(){
-        axios.get('http://localhost:8090/books/get').then(data => {this.books = data.data}).catch(e => alert(e))
-    },
-
     getAuthors(){
       axios.get('http://localhost:8090/authors/get').then(data => {this.authors = data.data}).catch(e => alert(e))
+    },
+
+    getBooks(){
+        axios.get('http://localhost:8090/books/get').then(data => {this.books = data.data}).catch(e => alert(e))
+        console.log(this.books)
+        
     },
 
     deleteBook(id){
@@ -116,8 +118,8 @@ export default {
     
   },
   mounted(){
-    this.getBooks(),
-    this.getAuthors()
+    this.getAuthors(),
+    this.getBooks()
   }
 }
 </script>
