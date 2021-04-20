@@ -5,8 +5,8 @@
         <td>{{book.id}} </td>
         <td> {{book.pages}} </td>
         <td>
-            <button class="book-update-button" @click="onUpdate">Update</button>
-            <button class="book-delete-button" @click="onDelete">Delete</button>
+           <!--  <button class="book-update-button" @click="onUpdate">Update</button> -->
+            <button class="page-button button-small shadow-box" @click="onDelete">Delete</button>
         </td>             
     </tr>
 </template>

@@ -1,11 +1,11 @@
 <template>
   <div id="app">
-    <div id="page-header">
+    <div id="page-header" class="content-box shadow-box">
       <h1 class="page-header-item"><a class="page-button" href="/">Book Service</a></h1>
-      <a class="page-button button" href="books">Books</a>
-      <a class="page-button button" href="authors">Authors</a>
+      <a class="page-button button shadow-box" href="books">Books</a>
+      <a class="page-button button shadow-box" href="authors">Authors</a>
     </div>
-    <div id="page-content">
+    <div id="page-content" class="content-box shadow-box">
       <h1> Witaj w book service! </h1>
     </div>
   </div>
@@ -19,6 +19,29 @@ export default {
 </script>
 
 <style>
+body {
+  height: 100%;
+}
+
+.bg-image { 
+  position: fixed;
+  left: -15px;
+  top: -15px;
+  z-index: -1;
+  display: block;
+  background-image: url("assets/bg1.jpg");
+  background-position: center; 
+  background-repeat: no-repeat; 
+  background-size: cover;
+  width: 105%;
+  height: 105%;
+  -webkit-filter: blur(4px);
+  -moz-filter: blur(4px);
+  -o-filter: blur(4px);
+  -ms-filter: blur(4px);
+  filter: blur(4px);
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -28,20 +51,39 @@ export default {
 }
 
 #page-header {
-  background-color: teal;
-  margin-bottom: 40px;
-  height: 100px;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  height: 120px;
+  padding: 0 25px;
 }
 
 #page-header .page-header-item {
-  background-color: teal;
-  align-items: center;
-  font-size: 50px;
+  font-size: 45px;
   color: white;
-  margin-left: 10px;
-  padding: 5px;
+  margin-right: 25%;
+}
+
+#page-content {
+  padding: 15px 25px;
+}
+
+.content-box {
+  margin: 0 auto;
+  background-color: #a98467;
+  border-radius: 15px;
+  width: 65%;
+  opacity: .99;
+  color: white;
+  text-shadow: 1px 1px 4px black;
+}
+
+
+.shadow-box { 
+  -webkit-box-shadow: 3px 3px 10px -3px #03071e; 
+  -moz-box-shadow:    3px 3px 10px -3px #03071e; 
+  box-shadow:         3px 3px 10px -3px #03071e;
 }
 
 .page-button {
@@ -49,22 +91,40 @@ export default {
   text-decoration: none;
 }
 
-.page-button:hover {
-  background-color: grey;
-}
-
 .button {
+  background-color: #a98467;
   border: 3px white solid;
   border-radius: 30px;
   padding: 15px;
-  margin: 17px;
-  font-size: 25px;
+  font-size: 22px;
   min-width: 150px;
+  margin: 15px;
+  text-shadow: 1px 1px 4px black;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #91755e;
+}
+
+.button-small {
+  background-color: #a98467;
+  border: 2px white solid;
+  border-radius: 15px;
+  padding: 5px;
+  font-size: 17px;
+  min-width: 90px;
+  margin: 5px;
+  text-shadow: 1px 1px 4px black;
+  cursor: pointer;
+}
+
+.button-small:hover {
+  background-color: #91755e;
 }
 
 .btn-active {
-  background-color: lightgrey;
-  color: black;
+  background-color: #e8c7ae;
 }
 
 

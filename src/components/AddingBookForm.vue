@@ -35,7 +35,7 @@
                 </p>
             </div>            
             <div class="form-field">
-                <button type="submit">Add</button>
+                <button type="submit" class="page-button button-small shadow-box">Add</button>
             </div>             
         </form>
     </div>

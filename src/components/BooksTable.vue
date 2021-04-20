@@ -55,14 +55,14 @@ export default {
         padding: 8px;
     }
 
-    #books-table tr:nth-child(even){background-color: rgb(204, 202, 202);}
-    #books-table tr:hover {background-color: teal}
+    #books-table tr:nth-child(even){background-color: #e8c7ae;}
+    #books-table tr:hover {background-color: #91755e}
 
     #books-table th {
         padding-top: 10px;
         padding-bottom: 10px;
         text-align: left;
-        background-color:teal;
+        background-color:#91755e;
         color: white;
     }
 

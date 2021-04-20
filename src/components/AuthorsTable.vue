@@ -53,14 +53,14 @@ export default {
         padding: 8px;
     }
 
-    #authors-table tr:nth-child(even){background-color: rgb(204, 202, 202);}
-    #authors-table tr:hover {background-color: teal}
+    #authors-table tr:nth-child(even){background-color: #e8c7ae;}
+    #authors-table tr:hover {background-color: #91755e}
 
     #authors-table th {
         padding-top: 10px;
         padding-bottom: 10px;
         text-align: left;
-        background-color:teal;
+        background-color:#91755e;
         color: white;
     }
 
